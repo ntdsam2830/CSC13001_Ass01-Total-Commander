@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="arrow.png" />
+    <None Remove="Icon\arrow.png" />
+    <None Remove="Icon\bin.png" />
+    <None Remove="Icon\copy.png" />
+    <None Remove="Icon\right-arrow.png" />
+    <None Remove="Icon\transfer.png" />
+    <None Remove="Icon\up-arrow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icon\arrow.png" />
+    <Resource Include="Icon\bin.png" />
+    <Resource Include="Icon\copy.png" />
+    <Resource Include="Icon\right-arrow.png" />
+    <Resource Include="Icon\transfer.png" />
+    <Resource Include="Icon\up-arrow.png" />
+  </ItemGroup>
+
+</Project>

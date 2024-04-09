@@ -1,0 +1,127 @@
+﻿<Window x:Class="TotalCommander.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TotalCommander"
+        mc:Ignorable="d"
+        Title="Sam's Total Commander" Height="700" Width="1350"
+        Loaded="Window_Loaded"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <!-- Toolbar Row -->
+            <RowDefinition Height="*"/>
+            <!-- Panes Row -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Toolbar -->
+        <ToolBar Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Button x:Name="BackBtn" Click="HandleBackBtnClick" Height="42" Width="46">
+                <StackPanel Orientation="Vertical">
+                    <Image Source="/Icon/arrow.png" Height="15" Width="31" Margin="2"/>
+                    <TextBlock Text="  Back" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ForwardBtn" Click="HandleForwardBtnClick">
+                <StackPanel Orientation="Vertical">
+                    <Image Source="/Icon/right-arrow.png" Height="20" Width="28"/>
+                    <TextBlock Text="Forward" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="UpBtn" Click="HandleUpBtnClick" Height="60" Width="40">
+                <StackPanel Orientation="Vertical">
+                    <Image Source="/Icon/up-arrow.png" Height="15" Width="21" Margin="2"/>
+                    <TextBlock Text=" Up" VerticalAlignment="Center"></TextBlock>
+                </StackPanel>
+            </Button>
+            <Rectangle Width="1" VerticalAlignment="Stretch" Fill="Black" Height="40"/>
+            <Button x:Name="CopyBtn" Click="HandleCopyBtnClick" Width="40">
+                <StackPanel Orientation="Vertical">
+                    <Image Source="/Icon/copy.png" Height="19" Width="19" Margin="0.5"/>
+                    <TextBlock Text="Copy" VerticalAlignment="Center"></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="MoveBtn" Click="HandleMoveBtnClick" Width="50" Height="46">
+                <StackPanel>
+                    <Image Source="/Icon/transfer.png" Height="21" Width="21"/>
+                    <TextBlock Text="Move" VerticalAlignment="center"></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="DelBtn" Click="HandleDelBtnClick" Width="41" Height="41">
+                <StackPanel>
+                    <Image Source="/Icon/bin.png" Height="18" Width="18" Margin="1"/>
+                    <TextBlock Text="Delete" VerticalAlignment="Center"></TextBlock>
+                </StackPanel>
+            </Button>
+            <!-- Add more buttons as needed -->
+        </ToolBar>
+
+        <!-- Left Pane -->
+        <Grid Grid.Row="1" Grid.Column="0">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+                <!-- ComboBox for selecting hard drives -->
+                <ComboBox x:Name="myComboBox1" Width="150" SelectionChanged="ComboBox1_SelectionChanged"/>
+                <!-- Label for displaying the current directory -->
+                <Label x:Name="myLabel1"/>
+            </StackPanel>
+            <!-- ListView for displaying directories and files in the current directory -->
+            <ListView Grid.Row="1" x:Name="myListView1" MouseDoubleClick="myListView1_MouseDoubleClick" SelectionMode="Single">>
+                <!-- ... Populate with directories and files ... -->
+                <ListView.View>
+                    <GridView>
+                        <!-- Columns for the ListView -->
+                        <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Type" Width="100" DisplayMemberBinding="{Binding Type}"/>
+                        <GridViewColumn Header="Size" Width="150" DisplayMemberBinding="{Binding Size}"/>
+                        <GridViewColumn Header="Date" Width="250" DisplayMemberBinding="{Binding Date}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+        <!-- center -->
+        <GridSplitter Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"/>
+
+        <!-- Right Pane -->
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+                <!-- ComboBox for selecting hard drives -->
+                <ComboBox x:Name="myComboBox2" Width="150" SelectionChanged="ComboBox2_SelectionChanged"/>
+                <!-- Label for displaying the current directory -->
+                <Label x:Name="myLabel2"/>
+            </StackPanel>
+
+            <!-- ListView for displaying directories and files in the current directory -->
+            <ListView Grid.Row="1" x:Name="myListView2" MouseDoubleClick="myListView2_MouseDoubleClick" SelectionMode="Single">
+                <!-- ... Populate with directories and files ... -->
+                <ListView.View>
+                    <GridView>
+                        <!-- Columns for the ListView -->
+                        <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Type" Width="100" DisplayMemberBinding="{Binding Type}"/>
+                        <GridViewColumn Header="Size" Width="150" DisplayMemberBinding="{Binding Size}"/>
+                        <GridViewColumn Header="Date" Width="250" DisplayMemberBinding="{Binding Date}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Grid>
+</Window>
